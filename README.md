@@ -17,11 +17,11 @@ Our project Grocery Master is an application that makes grocery shopping more co
 ## Run-time environment
 To run this code, you have to install not only selenium, but also chromedriver.exe and chrome, on your computer as well.
 This code will automatically detect if chromedriver.exe has been installed and check its version. If chromedriver has not been installed, the program will install it automatically, so usually you do not have to install it manually.
-If you want, you can also get chromedrive.exe from https://chromedriver.chromium.org/downloads.
+If you want, you can also get chromedrive.exe [here](https://chromedriver.chromium.org/downloads).
 Unfortunately, this code will not work in the IOS system, because some packages we used are only available in Windows.
 
 ## How to run the code
-We have provided you with a script version. To run this code, run the main.py script. A GUI interface will pop up and ask what product you would like to search for. You can also choose "turn on the browser", and a chrome browser will be opened when scraping the data, and you can watch how it scrapes. When the scraping process is finished, the button "output" table will become "finished". Click on that, and you will see a table containing nutrition information. If you click on the column names (they are actually buttons), and the table will be ranked accordingly in that dimension.
+We have provided you with a script version. To run this code, run the [main.py](https://github.com/HonglingLei/Grocery-Master/blob/main/main.py) script. A GUI interface will pop up and ask what product you would like to search for. You can also choose "turn on the browser", and a chrome browser will be opened when scraping the data, and you can watch how it scrapes. When the scraping process is finished, the button "output" table will become "finished". Click on that, and you will see a table containing nutrition information. If you click on the column names (they are actually buttons), and the table will be ranked accordingly in that dimension.
 Output will be stored in a .csv file in the same package with main.py.
 
 ## Selenium instead of beautifulsoup
