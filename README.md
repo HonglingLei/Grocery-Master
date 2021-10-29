@@ -34,7 +34,7 @@ Sometimes the websites do not have things you want. For example, we did not find
 Walmart has an anti-scraping program, and sometimes it will throw a verification page to check if you are a robot. Sometimes it will keep asking if you are a robot again and again. We checked our code and there was no logic error, so we checked in the chrome deveploper mode and found that it was an anti-scraping problem. We have provided you with a demo of our pre-scraped data just in case live-scraping does not work.
 
 ## Tricks on anti-scraping
-Sometimes Walmart will keep asking if you are a robot again and again. In this case, you can try this:
+Sometimes Walmart will keep asking if you are a robot again and again. In this case, you can try the following steps:
 1. Copy url of verification page;
 2. Open another chrome browser (not new tab, new browser) manually;
 3. Paste the url and verify there;
