@@ -1,15 +1,17 @@
 """
 Name : pre_process.py
 Author  : Hongliang Liu, Jing Li, Hongling Lei, Aishwarya Kura
-Contact : honglian@andrew.cmu.edu
+Contact : see README
 Time    : 2021/9/11 15:57
 Desc: used to scrape data from website A
 """
+
 import os
 import re
 import winreg
 import zipfile
 import requests
+
 
 base_url = 'http://npm.taobao.org/mirrors/chromedriver/'
 version_re = re.compile(r'^[1-9]\d*\.\d*.\d*')  # Use reg to match the version of chrome
