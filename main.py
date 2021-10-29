@@ -1,10 +1,11 @@
 """
 Name : pre_process.py
 Author  : Hongliang Liu, Jing Li, Hongling Lei, Aishwarya Kura
-Contact : honglian@andrew.cmu.edu
+Contact : See README
 Time    : 2021/9/11 15:57
 Desc: used to scrape data from website A
 """
+
 from os import times
 from scrape import Scrape_TJ, Scrape_target, Scrape_walmart, chrome
 from tkinter.constants import COMMAND, END
@@ -35,7 +36,6 @@ class Application(tk.Tk):
 
     def to_scrape(self, cont, entryText, isBrowser):
         '''
-
         entryText: The input for what users want to buy
         isBrowser: The bool variable for Chrome to display
         '''
@@ -63,6 +63,7 @@ class Application(tk.Tk):
         t = threading.Thread(target=frame.checkChromeDriverUpdate)
         t.start()
         
+        
 class StartPage(tk.Frame):
     '''
     indexPage
@@ -73,7 +74,6 @@ class StartPage(tk.Frame):
         super().__init__(parent)
         label_welcome = tk.Label(self, text="Welcome", font=(LARGE_FONT, 21))
         self.label_match = tk.Label(self, text="This label is for match version", font=(LARGE_FONT, 15))
-        
 
         label_buy = tk.Label(self, text="what do you want to buy?", font=(LARGE_FONT, 15))
         label_welcome.pack(pady=10,padx=10)
@@ -96,6 +96,7 @@ class StartPage(tk.Frame):
         isBrowser = self.checkVar.get()
         root.to_scrape(Scrape, entry_text, isBrowser)
 
+        
     def checkChromeDriverUpdate(self):
         chrome_version = getChromeVersion() #current chrome version
         driver_version = getChromeDriverVersion() #driver version
@@ -114,6 +115,7 @@ class StartPage(tk.Frame):
                 self.label_match.configure(text='Unknow exception: {}'.format(e))
                 return False
 
+            
 class Scrape(tk.Frame):
     '''
     The Scrape Page for scraping, where the scraping detail will be avalibale in this Page.
@@ -153,7 +155,7 @@ class Scrape(tk.Frame):
             self.all_list.extend(self.walmart_list.total_list)
             
             '''
-            Scraping TJ
+            Scraping Trader Joe's
             '''
             if isBrowser == '1':
                 browser = chrome("Y")
@@ -167,7 +169,7 @@ class Scrape(tk.Frame):
             self.all_list.extend(self.TJ_list.total_list)
             
             '''
-            Scraping target
+            Scraping Target
             '''
             self.target_list = Scrape_target()
             self.target_list.set_chrome(driver)
@@ -178,9 +180,11 @@ class Scrape(tk.Frame):
         else:
             self.label.configure(text="Please input what you want to buy")
             
+            
     def to_Table(self, root):
         root.to_table(Table, self.all_list, self.enrtyText)
 
+        
 class Table(tk.Frame):
     '''Table Page'''
     def __init__(self, parent, root):
@@ -191,6 +195,7 @@ class Table(tk.Frame):
         button1 = ttk.Button(self, text="search another item", command=lambda: root.show_frame(StartPage)).pack()
         button2 = ttk.Button(self, text="quit", command=lambda: exit(0)).pack()
 
+        
     def display(self, tablelist, entryText):
         
         self.label.configure(text='Query Name:{}'.format(entryText))
@@ -256,12 +261,12 @@ class Table(tk.Frame):
 
         f.close()
             
-
         
     def treeview_sort_column(self,col, reverse):#Treeview、column name
         l = [(self.table.set(k, col), k) for k in self.table.get_children('')]
         print(l)
         l.sort(reverse=reverse)#sort
+        
         # rearrange items in sorted positions
         for index, (val, k) in enumerate(l):#
             self.table.move(k, '', index)
@@ -270,7 +275,6 @@ class Table(tk.Frame):
         self.table.heading(column=col,text=col,anchor=CENTER, command=lambda col=col: self.treeview_sort_column(col, not reverse))#rename title
         
         self.table.update()
-
 
 
 if __name__ == '__main__':
