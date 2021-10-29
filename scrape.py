@@ -1,17 +1,19 @@
 """
 Name : pre_process.py
 Author  : Hongliang Liu, Jing Li, Hongling Lei, Aishwarya Kura
-Contact : honglian@andrew.cmu.edu
+Contact : See README
 Time    : 2021/9/11 15:57
 Desc: used to scrape data from website A
 """
-# sorry but we didn't use beautifulsoup because our target websites hide their html code with javascript, so instead of bs, we choose selenium to handle this
+
+# We didn't use beautifulsoup because our target websites hide their html code with javascript. Instead, we chose selenium to handle this
 from tkinter.constants import N, NO
 from selenium import webdriver
 import os
 import re
 option = webdriver.ChromeOptions()
 option.add_argument('headless') # 设置option
+
 
 def process_query(query):
     '''
@@ -34,11 +36,11 @@ class chrome():
 
     def get_driver(self):
         '''
-
         :return: a browser
         '''
         return self.driver
 
+    
 class Scrapeongo():
     '''
     desc: used for store the item on going and the error
@@ -50,18 +52,15 @@ class Scrapeongo():
     
     def push_ongoing(self, label, content):   
         label.configure(text=content)
-        
-        
+          
         
 class Scrape_TJ(Scrapeongo):
     '''
     desc:used for scraping data from traderjoes
     '''
     def __init__(self):
-
         '''
         desc:url format like:https://www.traderjoes.com/home/search?q=apple+juice
-
         '''
         super().__init__()
         self.url_pre = "https://www.traderjoes.com/home/search?q="
@@ -70,19 +69,18 @@ class Scrape_TJ(Scrapeongo):
     def set_chrome(self,driver):
         '''
         desc: set scraper's browser to driver
-
         :param driver: browser
         :return:
         '''
         self.driver=driver
+        
+        
     def get_table(self,query,gui):
         '''
         desc:get all product information that is being searching
-
         :param query: String, product being searching
         :return:
         '''
-
         # get all item's url that is being searched
         self.get_item_url(query)
 
@@ -97,7 +95,6 @@ class Scrape_TJ(Scrapeongo):
                     'website': 'traderjoe'
                 }
             try:
-
                 table = self.get_item_table(i)
                 line['name'] = self.driver.find_element_by_xpath('//h2[@class="ProductDetails_main__title__14Cnm"]').text
                 head = list(table.values())[1]
@@ -109,29 +106,27 @@ class Scrape_TJ(Scrapeongo):
                         line[headname] = [Facts[index] if Facts[index] else 'NULL', Facts_2[index] if Facts_2[index] else 'NULL']
 
                 self.total_list.append(line)
-
                 #以{营养名称: [含量, 百分比]}形式储存
             except Exception as e:
                 self.total_list.append(line)
                 self.push_ongoing(gui.label2, "Scraping traderjoe's {} item, error: {}".format(flag, e))
 
+                
     def get_html(self,url):
         '''
         desc: let the browser scraping url
-
         :param url: String, item url
         :return:
         '''
         self.driver.get(url)
 
+        
     def get_item_url(self,query):
         '''
         desc: get all the url of items that are being scraped
-
         :param query: String, searched items
         :return:
-        '''
-
+        '''      
         # get searching url
         url=self.url_pre+process_query(query)
 
@@ -149,7 +144,6 @@ class Scrape_TJ(Scrapeongo):
     def get_item_table(self,url):
         '''
         desc: get all nutrition data of item from its url
-
         :param url: product's url which is being scraping
         :return: table, dictionary, nutrition data of
         '''
@@ -174,7 +168,6 @@ class Scrape_TJ(Scrapeongo):
                 table[column[0]] = list
             else:
                 flag=False
-
         return table
 
 
@@ -182,29 +175,26 @@ class Scrape_walmart(Scrapeongo):
     '''
     desc:used for scraping data from walmart
     '''
-
     def __init__(self):
-
         '''
         desc:url format like:https://www.walmart.com/search?q=apple+juice
-
         '''
         super().__init__()
         self.url_pre = "https://www.walmart.com/search?q="
 
+        
     def set_chrome(self, driver):
         '''
         desc: set scraper's browser to driver
-
         :param driver: browser
         :return:
         '''
         self.driver = driver
 
+        
     def get_table(self, query, gui):
         '''
         desc:get all product information that is being searching
-
         :param query: String, product being searching
         :return:
         '''
@@ -216,13 +206,14 @@ class Scrape_walmart(Scrapeongo):
         self.item = []
         flag=0
         for i in self.item_url_list:
+            
             flag+=1
             self.push_ongoing(gui.label3, "Scraping walmart {} item, error: {}".format(flag, None))
             lines = {
                 'name': None,
                 'website': 'walmart'
-                
             }
+            
             try:
                 table = self.get_item_table(i)
                 lines['name'] = self.driver.find_element_by_xpath('//h1[@class="f3 b lh-copy dark-gray mt1 mb2"]').text
@@ -236,37 +227,31 @@ class Scrape_walmart(Scrapeongo):
                             k = '{}mg'.format(k)
                         else:
                             k = '{}mcg'.format(k)
-                            
                         loc = '{}%'.format(result[1][0])
                         name = line.replace(k,'').replace(loc, '').strip()
                         lines[name] = [k, loc]
-
                 self.total_list.append(lines)
                 
             except Exception as e:
                 self.total_list.append(lines)
                 self.push_ongoing(gui.label3, "Scraping walmart {} item, error: {}".format(flag, e))
-
-                
-                
+          
 
     def get_html(self, url):
         '''
         desc: let the browser scraping url
-
         :param url: String, item url
         :return:
         '''
         self.driver.get(url)
 
+        
     def get_item_url(self, query):
         '''
         desc: get all the url of items that are being scraped
-
         :param query: String, searched items
         :return:
         '''
-
         # get searching url
         url = self.url_pre + process_query(query)
 
@@ -284,7 +269,6 @@ class Scrape_walmart(Scrapeongo):
     def get_item_table(self, url):
         '''
         desc: get all nutrition data of item from its url
-
         :param url: product's url which is being scraping
         :return: table, dictionary, nutrition data of
         '''
@@ -292,13 +276,10 @@ class Scrape_walmart(Scrapeongo):
         self.driver.implicitly_wait(20)
         table = []
 
-
-        # scrape table content
-        
+        # scrape table content        
         t = self.driver.find_elements_by_xpath("//table")
         if t:
             table=t[0].text.split("\n")
-
         return table
 
 
@@ -307,31 +288,28 @@ class Scrape_target(Scrapeongo):
     desc:used for scraping data from target
     '''
     def __init__(self):
-
         '''
         desc:url format like:https://www.target.com/s?searchTerm=apple+juice
-
         '''
-
         super().__init__()
         self.url_pre = "https://www.target.com/s?searchTerm="
 
+        
     def set_chrome(self,driver):
         '''
         desc: set scraper's browser to driver
-
         :param driver: browser
         :return:
         '''
         self.driver=driver
+        
+        
     def get_table(self,query, gui):
         '''
         desc:get all product information that is being searching
-
         :param query: String, product being searching
         :return:
         '''
-
         # get all item's url that is being searched
         self.get_item_url(query)
         print(self.item_url_list)
@@ -378,6 +356,7 @@ class Scrape_target(Scrapeongo):
                 self.push_ongoing(gui.label4, "Scraping target {} item, error: {}".format(flag, e))
                 pass
 
+            
     def get_html(self,url):
         '''
         desc: let the browser scraping url
@@ -387,14 +366,13 @@ class Scrape_target(Scrapeongo):
         '''
         self.driver.get(url)
 
+        
     def get_item_url(self,query):
         '''
         desc: get all the url of items that are being scraped
-
         :param query: String, searched items
         :return:
         '''
-
         # get searching url
         url=self.url_pre+process_query(query)
 
@@ -411,14 +389,12 @@ class Scrape_target(Scrapeongo):
     def get_item_table(self,url):
         '''
         desc: get all nutrition data of item from its url
-
         :param url: product's url which is being scraping
         :return: table, dictionary, nutrition data of
         '''
         self.get_html(url)
         self.driver.implicitly_wait(20)
         table=[]
-
 
         # scrape table content
         button = self.driver.find_elements_by_xpath("//*[@id=\"tab-Labelinfo\"]/div")
@@ -429,8 +405,7 @@ class Scrape_target(Scrapeongo):
 
         return table
 
-#*****************test code*******************
-
+#***************** test code *******************
 
 # print("what do you want to buy?")
 # print("do you want to turn on the browser?")
@@ -470,12 +445,12 @@ class Scrape_target(Scrapeongo):
 # total_list.append(list_target)
 # print("scraping finished!")
 # print(total_list)
-#*****************test code*******************
+
+
+#***************** test code *******************
 
 # class scrape_B():
 #     def __init__(self):
 #
 # class scrape_C():
 #     def __init__(self):
-
-
