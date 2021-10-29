@@ -1,19 +1,19 @@
+# Project Description
+Our project Grocery Master is an application that makes grocery shopping more convenient and scientific for customers. Users can simply type the product name in the search bar, and GroceryMaster will display all available options, including brand name, ingredients and nutrition values, as well as their availability at nearby grocery stores. Grocery Master can also give customized product recommendations based on users’ health needs. For example, if you search for “apple juice” and click on “sugar”, GroceryMaster will return available apple juice options - ranked by sugar amount - at Trader Joe’s, Target, and Walmart.
+
 # Team Contacts
 - Hongliang Liu: honglian@andrew.cmu.edu
 - Jing Li: jingli4@andrew.cmu.edu
 - Hongling Lei: hongling@andrew.cmu.edu
 - Kura Aishwarya: akura@andrew.cmu.edu
 
-Many thanks to all my amazing team members, especially Hongliang who contributed a lot to the coding part.
+*Many thanks to all my amazing team members, especially Hongliang who contributed a lot to the coding part.*
 
 # Demo Links
 We have recorded several videos to help people understand how Grocery Master works and why it matters. The first video is our pitch presentation where we explained the market and potential business value of our product. The second video is a detailed case demo, including some explanations about the code structure. The third video is a pure showcase of the program.
 - [Pitch Presentation](https://www.youtube.com/watch?v=g1utgS0EcM0)
 - [Detailed Demo](https://www.youtube.com/watch?v=RKH5n60_kZ4)
 - [Pure Showcase](https://www.youtube.com/watch?v=k-xWSYLsQx4)
-
-# Project Introduction
-Our project Grocery Master is an application that makes grocery shopping more convenient and scientific for customers. Users can simply type the product name in the search bar, and GroceryMaster will display all available options, including brand name, ingredients and nutrition values, as well as their availability at nearby grocery stores. Grocery Master can also give customized product recommendations based on users’ health needs. For example, if you search for “apple juice” and click on “sugar”, GroceryMaster will return available apple juice options - ranked by sugar amount - at Trader Joe’s, Target, and Walmart.
 
 # Instructions
 ## Run-time environment
