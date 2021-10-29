@@ -3,7 +3,7 @@ Name : pre_process.py
 Author  : Hongliang Liu, Jing Li, Hongling Lei, Aishwarya Kura
 Contact : See README
 Time    : 2021/9/11 15:57
-Desc: Used to scrape data from website A
+Desc: Scrapes data from website A
 """
 
 import os
