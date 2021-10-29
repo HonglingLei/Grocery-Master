@@ -3,6 +3,7 @@
 - Jing Li: jingli4@andrew.cmu.edu
 - Hongling Lei: hongling@andrew.cmu.edu
 - Kura Aishwarya: akura@andrew.cmu.edu
+Many thanks to all my amazing team members, especially Hongliang who contributed a lot to the coding part.
 
 # Demo Links
 We have recorded several videos to help people understand how Grocery Master works and why it matters. The first video is our pitch presentation where we explained the market and potential business value of our product. The second video is a detailed case demo, including some explanations about the code structure. The third video is a pure showcase of the program.
