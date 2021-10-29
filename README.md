@@ -1,5 +1,5 @@
 # Team Contacts
-- Hongliang Liu (the main coder): honglian@andrew.cmu.edu
+- Hongliang Liu: honglian@andrew.cmu.edu
 - Jing Li: jingli4@andrew.cmu.edu
 - Hongling Lei: hongling@andrew.cmu.edu
 - Kura Aishwarya: akura@andrew.cmu.edu
