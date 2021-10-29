@@ -3,6 +3,7 @@
 - Jing Li: jingli4@andrew.cmu.edu
 - Hongling Lei: hongling@andrew.cmu.edu
 - Kura Aishwarya: akura@andrew.cmu.edu
+
 Many thanks to all my amazing team members, especially Hongliang who contributed a lot to the coding part.
 
 # Demo Links
